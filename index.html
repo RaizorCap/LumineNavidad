@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#12091a" />
+  <title>Navidad para Luminé ✨</title>
+
+  <!-- Open Graph / Social preview (WhatsApp, FB, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Navidad para Milagros Luminé ✨" />
+  <meta property="og:description" content="Una web navideña interactiva con poster descargable 🎄💜" />
+  <meta property="og:url" content="https://github.com/RaizorCap/LumineNavidad.git" />
+  <meta property="og:image" content="https://github.com/RaizorCap/LumineNavidad.git/social-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Navidad para Milagros Luminé ✨" />
+  <meta name="twitter:description" content="Una web navideña interactiva con poster descargable 🎄💜" />
+  <meta name="twitter:image" content="https://github.com/RaizorCap/LumineNavidad.git/social-preview.png" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brandDot" aria-hidden="true"></span>
+        <div>
+          <div class="brandTitle">Navidad ✨ para Luminé</div>
+          <div class="brandSub">Lo puedes ver en Móvil y Computadora</div>
+        </div>
+      </div>
+      <div class="stepPill" id="stepPill">Paso 1/6</div>
+    </header>
+
+    <main class="stage" aria-live="polite">
+      <div class="snow" aria-hidden="true"></div>
+
+      <!-- PASO 1 -->
+      <section class="screen active" data-step="1">
+        <div class="grid">
+          <div class="card invitation">
+            <div class="sealRow">
+              <span class="seal">✉️ INVITACIÓN • Navidad 2025</span>
+              <span class="miniTag">Con tus colores favoritos</span>
+            </div>
+
+            <h1 class="h1">
+              Para <span class="accent">Milagros Luminé</span>
+            </h1>
+
+            <p class="p">
+              Esta es una cajita navideña hecha para ti, <b>mi mejor amiga</b>.
+              Con detalles, alegría de Navidad y un poster descargable al final.
+            </p>
+
+            <div class="divider"></div>
+
+            <p class="p soft">
+              Importante: al final hay un <b>regalo extra</b> donde podrás editar y personalizar tu poster
+              (se desbloquea cuando lo exportes por primera vez). 🎁
+            </p>
+
+            <div class="btnRow">
+              <button class="btn primary" id="goGift">Abrir invitación</button>
+              <button class="btn" id="quickStart">Ir al regalo</button>
+            </div>
+
+            <p class="hint">Espero te guste 😉</p>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Qué hay dentro</h2>
+            <ul class="list">
+              <li>Regalo interactivo (desbloquea la historia)</li>
+              <li>Tarjetas sorpresa + “Cuando dudes”</li>
+              <li>Modo UNMSM (ánimo real, sin promesas)</li>
+              <li>Medidor de energía</li>
+              <li>Poster “lujo” descargable (PNG)</li>
+              <li><b>Regalo extra:</b> Estudio de edición</li>
+            </ul>
+
+            <div class="note">
+              <div class="noteTitle">Estilo</div>
+              <div class="noteText">
+                Morado oscuro + violeta intenso, con marco doble oro/plata y detalles navideños finos.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PASO 2 -->
+      <section class="screen" data-step="2">
+        <div class="grid">
+          <div class="card">
+            <h2 class="h1">Un regalo navideño para ti 🎁</h2>
+            <p class="p">Toca el regalo para abrirlo. Cuando se abra, se desbloquea lo demás.</p>
+
+            <div class="giftWrap">
+              <div class="gift" id="gift" role="button" aria-label="Abrir regalo" tabindex="0">
+                <div class="giftLid"></div>
+                <div class="giftBox"></div>
+                <div class="giftRibbonV"></div>
+                <div class="giftRibbonH"></div>
+                <div class="giftBow" aria-hidden="true"></div>
+              </div>
+
+              <div class="revealBadge" id="revealBadge" aria-hidden="true">
+                ✨ Desbloqueado ✨
+              </div>
+            </div>
+
+            <div class="btnRow">
+              <button class="btn gold" id="openGift">Abrir regalo</button>
+              <button class="btn" id="skipGift">Ya está abierto →</button>
+            </div>
+
+            <p class="hint" id="giftHint">Al abrirlo, pasas al paso 3.</p>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Una regla</h2>
+            <p class="p soft">
+              La edición/personalización está guardada como “extra”.
+              Primero vive la web completa, luego se desbloquea el estudio. ✨
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PASO 3 -->
+      <section class="screen" data-step="3">
+        <div class="grid">
+          <div class="card">
+            <h2 class="h1">Momentitos para Luminé ✨</h2>
+            <p class="p">
+              Tarjetitas sorpresa, ánimo para estudiar, y un botón especial “cuando dudes”.
+            </p>
+
+            <div class="microGrid">
+              <div class="microCard">
+                <div class="microTitle">🎁 Tarjetas sorpresa</div>
+                <div class="microSub">Toca una tarjeta para revelar.</div>
+
+                <div class="flipGrid" id="flipGrid">
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">🎄 Sorpresa 1</span>
+                      <span class="flipBack" id="cardBack1"></span>
+                    </span>
+                  </button>
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">✨ Sorpresa 2</span>
+                      <span class="flipBack" id="cardBack2"></span>
+                    </span>
+                  </button>
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">💜 Sorpresa 3</span>
+                      <span class="flipBack" id="cardBack3"></span>
+                    </span>
+                  </button>
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">🌟 Sorpresa 4</span>
+                      <span class="flipBack" id="cardBack4"></span>
+                    </span>
+                  </button>
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">☃️ Sorpresa 5</span>
+                      <span class="flipBack" id="cardBack5"></span>
+                    </span>
+                  </button>
+                  <button class="flipCard" type="button">
+                    <span class="flipInner">
+                      <span class="flipFront">🎀 Sorpresa 6</span>
+                      <span class="flipBack" id="cardBack6"></span>
+                    </span>
+                  </button>
+                </div>
+
+                <div class="btnRow">
+                  <button class="btn" id="resetCards">Reiniciar tarjetas</button>
+                </div>
+              </div>
+
+              <div class="microCard">
+                <div class="microTitle">🧠 Modo UNMSM</div>
+                <div class="microSub">Ánimo real (sin promesas): apoyo y calma.</div>
+
+                <div class="pepTalkBox">
+                  <div class="pepTalkOut" id="pepTalkOut">Presiona “Dame ánimo” 💜</div>
+                  <div class="btnRow">
+                    <button class="btn primary" id="pepTalkBtn">Dame ánimo</button>
+                    <button class="btn" id="copyPepTalk">Copiar</button>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="microTitle">🫶 Cuando dudes</div>
+                <div class="microSub">Cumplidos reales (sin repetir hasta agotarse).</div>
+
+                <div class="pepTalkBox">
+                  <div class="pepTalkOut" id="doubtOut">Presiona “Cuando dudes” ✨</div>
+                  <div class="btnRow">
+                    <button class="btn gold" id="doubtBtn">Cuando dudes</button>
+                    <button class="btn" id="resetDoubts">Reiniciar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="energyBox">
+              <div class="energyTop">
+                <div>
+                  <div class="microTitle">⚡ Medidor de energía</div>
+                  <div class="microSub">¿Cómo está hoy la energía de la Srta. Luminé?</div>
+                </div>
+                <div class="energyValue" id="energyValue">70%</div>
+              </div>
+
+              <input id="energyRange" type="range" min="0" max="100" value="70" />
+              <div class="energyLine" id="energyLine">Estás fuerte. A tu ritmo, pero firme. 💜</div>
+            </div>
+
+            <div class="btnRow">
+              <button class="btn primary" id="goLetter">Seguir → carta y fotos</button>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Detalle gatuno 🐾</h2>
+            <p class="p soft">
+              Adoptó una gatita de la calle. En el poster final hay un modo opcional de “huellitas”.
+              Se activa en el estudio de edición (regalo extra).
+            </p>
+
+            <div class="note" style="margin-top:12px;">
+              <div class="noteTitle">Frase clave</div>
+              <div class="noteText">
+                “Conocerás a muchas personas… pero en mí encontrarás alguien que estará disponible extendiendo mi mano…”
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PASO 4 -->
+      <section class="screen" data-step="4">
+        <div class="grid">
+          <div class="card">
+            <h2 class="h1">Carta navideña ✨</h2>
+            <p class="p">
+              Aquí está tu carta. La edición se desbloquea al final (cuando exportes el poster por primera vez).
+            </p>
+
+            <div class="lockBanner">
+              🔒 Edición bloqueada por ahora — se desbloquea al final como regalo extra.
+            </div>
+
+            <div class="photos">
+              <div class="photoCard">
+                <div class="photoHead">
+                  <div class="photoTitle">📷 Luminé (Milagros)</div>
+                  <div class="photoMeta">1:1 • bordes redondeados</div>
+                </div>
+                <img class="photo" id="imgLumine" alt="Foto de Luminé" />
+                <div class="fileRow">
+                  <input type="file" id="fileLumine" accept="image/*" class="lockable" disabled />
+                </div>
+
+                <label class="switchRow">
+                  <input type="checkbox" id="enhanceLumine" class="lockable" checked disabled />
+                  <span>Realzar foto de Luminé (suave)</span>
+                </label>
+              </div>
+
+              <div class="photoCard">
+                <div class="photoHead">
+                  <div class="photoTitle">📷 Yo</div>
+                  <div class="photoMeta">1:1 • bordes redondeados</div>
+                </div>
+                <img class="photo" id="imgMe" alt="Mi foto" />
+                <div class="fileRow">
+                  <input type="file" id="fileMe" accept="image/*" class="lockable" disabled />
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="formGrid">
+              <div>
+                <label class="label">Firma</label>
+                <input class="input lockable" id="fromName" disabled />
+              </div>
+              <div>
+                <label class="label">Frase revelación</label>
+                <input class="input lockable" id="revealLine" disabled />
+              </div>
+            </div>
+
+            <div class="formGrid mt12">
+              <div>
+                <label class="label">Meta/carrera (opcional)</label>
+                <input class="input lockable" id="goalLine" disabled />
+              </div>
+              <div>
+                <label class="label">Sello corto</label>
+                <input class="input lockable" id="sealLine" disabled />
+              </div>
+            </div>
+
+            <label class="switchRow">
+              <input type="checkbox" id="srtaMode" class="lockable" checked disabled />
+              <span>Usar sello “Srta. Luminé” en el poster</span>
+            </label>
+
+            <label class="label mt12">Mensaje largo</label>
+            <textarea id="message" class="textarea lockable" disabled></textarea>
+
+            <div class="btnRow">
+              <button class="btn primary" id="goPoster">Ir al poster</button>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Frases (para el poster)</h2>
+            <p class="p soft">Se verán en el poster final. Por ahora solo lectura:</p>
+
+            <div class="phrases">
+              <div class="phraseRow"><span class="chip">1</span><input class="input lockable" id="phrase1" disabled /></div>
+              <div class="phraseRow"><span class="chip">2</span><input class="input lockable" id="phrase2" disabled /></div>
+              <div class="phraseRow"><span class="chip">3</span><input class="input lockable" id="phrase3" disabled /></div>
+              <div class="phraseRow"><span class="chip">4</span><input class="input lockable" id="phrase4" disabled /></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PASO 5 -->
+      <section class="screen" data-step="5">
+        <div class="grid">
+          <div class="card">
+            <h2 class="h1">Poster “lujo” descargable 🎄</h2>
+            <p class="p">
+              Presiona <b>Generar</b> para actualizar el poster.
+              Luego puedes <b>Descargar</b> o <b>Compartir</b>.
+              Al exportarlo por primera vez, se desbloquea el <b>regalo extra</b>.
+            </p>
+
+            <div class="canvasWrap">
+              <canvas id="poster" width="1200" height="1600" aria-label="Poster navideño"></canvas>
+            </div>
+
+            <div class="btnRow">
+              <button class="btn primary" id="genPoster">Generar</button>
+              <button class="btn gold" id="downloadPoster">Descargar PNG</button>
+              <button class="btn" id="sharePoster">Compartir</button>
+              <button class="btn" id="backToLetter">Volver</button>
+            </div>
+
+            <div class="bonusLocked" id="bonusLocked">
+              🔒 Regalo extra (edición) se desbloquea después de la primera exportación.
+            </div>
+
+            <div class="btnRow">
+              <button class="btn primary" id="goBonus" style="display:none;">🎁 Abrir regalo extra: Estudio de edición</button>
+            </div>
+
+            <div class="shareHint" id="shareHint" aria-live="polite"></div>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Contenido en el poster</h2>
+            <ul class="list">
+              <li>Marco doble oro/plata + guirnalda</li>
+              <li>2 fotos por defecto (lumine.jpeg / rube.jpg)</li>
+              <li>Promesa de amistad + mensaje largo</li>
+              <li>Frases cortas decorativas</li>
+              <li>Opcional: huellitas por la gatita 🐾 (bonus)</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- PASO 6 -->
+      <section class="screen" data-step="6">
+        <div class="grid">
+          <div class="card">
+            <h2 class="h1">🎁 Regalo extra: Estudio de edición</h2>
+            <p class="p">Aquí ya puedes personalizar y todo saldrá reflejado en la imagen descargable.</p>
+
+            <div class="divider"></div>
+
+            <div class="formGrid">
+              <div>
+                <label class="label">Nombre en el poster</label>
+                <input class="input" id="displayNameBonus" />
+              </div>
+              <div>
+                <label class="label">Firma</label>
+                <input class="input" id="fromNameBonus" />
+              </div>
+            </div>
+
+            <div class="formGrid mt12">
+              <div>
+                <label class="label">Frase revelación</label>
+                <input class="input" id="revealLineBonus" />
+              </div>
+              <div>
+                <label class="label">Meta/carrera</label>
+                <input class="input" id="goalLineBonus" />
+              </div>
+            </div>
+
+            <div class="formGrid mt12">
+              <div>
+                <label class="label">Sello corto</label>
+                <input class="input" id="sealLineBonus" />
+              </div>
+              <div>
+                <label class="label">Nivel de brillo (0–100)</label>
+                <input class="input" id="glitterBonus" type="number" min="0" max="100" />
+              </div>
+            </div>
+
+            <div class="formGrid mt12">
+              <div>
+                <label class="label">Nombre de la gatita (opcional)</label>
+                <input class="input" id="catNameBonus" placeholder="Ej: Mishi / Luna / (lo que quieras)" />
+              </div>
+              <div></div>
+            </div>
+
+            <label class="switchRow">
+              <input type="checkbox" id="srtaModeBonus" />
+              <span>Usar “Srta. Luminé”</span>
+            </label>
+
+            <label class="switchRow">
+              <input type="checkbox" id="pawModeBonus" />
+              <span>Activar huellitas 🐾</span>
+            </label>
+
+            <label class="switchRow">
+              <input type="checkbox" id="enhanceLumineBonus" />
+              <span>Realzar foto de Luminé (suave)</span>
+            </label>
+
+            <div class="divider"></div>
+
+            <label class="label">Tu frase de apoyo (promesa de amistad)</label>
+            <textarea class="textarea" id="promiseBonus"></textarea>
+
+            <label class="label mt12">Mensaje largo</label>
+            <textarea class="textarea" id="messageBonus"></textarea>
+
+            <div class="divider"></div>
+
+            <h3 class="h2">Frases cortas</h3>
+            <div class="phrases">
+              <div class="phraseRow"><span class="chip">1</span><input class="input" id="phrase1Bonus" /></div>
+              <div class="phraseRow"><span class="chip">2</span><input class="input" id="phrase2Bonus" /></div>
+              <div class="phraseRow"><span class="chip">3</span><input class="input" id="phrase3Bonus" /></div>
+              <div class="phraseRow"><span class="chip">4</span><input class="input" id="phrase4Bonus" /></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3 class="h2">Cambiar fotos (opcional)</h3>
+            <div class="photos">
+              <div class="photoCard">
+                <div class="photoHead"><div class="photoTitle">📷 Luminé</div><div class="photoMeta">1:1</div></div>
+                <div class="fileRow"><input type="file" id="fileLumineBonus" accept="image/*" /></div>
+              </div>
+              <div class="photoCard">
+                <div class="photoHead"><div class="photoTitle">📷 Yo</div><div class="photoMeta">1:1</div></div>
+                <div class="fileRow"><input type="file" id="fileMeBonus" accept="image/*" /></div>
+              </div>
+            </div>
+
+            <div class="btnRow">
+              <button class="btn primary" id="backToPoster">Volver al poster</button>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2 class="h2">Qué se actualiza</h2>
+            <ul class="list">
+              <li>Nombre en poster, firma, frases y mensaje</li>
+              <li>Promesa de amistad</li>
+              <li>Brillo + huellitas + nombre de gatita</li>
+              <li>Fotos (si quiere jugar)</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="navBar">
+        <button class="btn" id="prev">← Atrás</button>
+        <button class="btn" id="next">Siguiente →</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

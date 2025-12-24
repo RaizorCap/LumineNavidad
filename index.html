@@ -48,7 +48,7 @@
 
       <!-- PASO 1 -->
       <section class="screen active" data-step="1">
-        <div class="grid">
+        <div class="grid one">
           <div class="card invitation">
             <div class="sealRow">
               <span class="seal">✉️ INVITACIÓN • Navidad 2025</span>
@@ -79,30 +79,12 @@
             <p class="hint">Espero te guste 😉</p>
           </div>
 
-          <aside class="card">
-            <h2 class="h2">Qué hay dentro</h2>
-            <ul class="list">
-              <li>Regalo interactivo (desbloquea la historia)</li>
-              <li>Tarjetas sorpresa + “Cuando dudes”</li>
-              <li>Modo UNMSM (ánimo real, sin promesas)</li>
-              <li>Medidor de energía</li>
-              <li>Poster “lujo” descargable (PNG)</li>
-              <li><b>Regalo extra:</b> Estudio de edición</li>
-            </ul>
-
-            <div class="note">
-              <div class="noteTitle">Estilo</div>
-              <div class="noteText">
-                Morado oscuro + violeta intenso, con marco doble oro/plata y detalles navideños finos.
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
       <!-- PASO 2 -->
       <section class="screen" data-step="2">
-        <div class="grid">
+        <div class="grid two">
           <div class="card">
             <h2 class="h1">Un regalo navideño para ti 🎁</h2>
             <p class="p">Toca el regalo para abrirlo. Cuando se abra, se desbloquea lo demás.</p>
@@ -141,11 +123,11 @@
 
       <!-- PASO 3 -->
       <section class="screen" data-step="3">
-        <div class="grid">
+        <div class="grid one">
           <div class="card">
             <h2 class="h1">Momentitos para Luminé ✨</h2>
             <p class="p">
-              Tarjetitas sorpresa, ánimo para estudiar, y un botón especial “cuando dudes”.
+              Adelante descubre lo que hay en esta parte.
             </p>
 
             <div class="microGrid">
@@ -192,14 +174,12 @@
                   </button>
                 </div>
 
-                <div class="btnRow">
-                  <button class="btn" id="resetCards">Reiniciar tarjetas</button>
-                </div>
+                
               </div>
 
               <div class="microCard">
                 <div class="microTitle">🧠 Modo UNMSM</div>
-                <div class="microSub">Ánimo real (sin promesas): apoyo y calma.</div>
+                <div class="microSub">Ánimo apoyo y calma eso busco darte.</div>
 
                 <div class="pepTalkBox">
                   <div class="pepTalkOut" id="pepTalkOut">Presiona “Dame ánimo” 💜</div>
@@ -212,7 +192,7 @@
                 <div class="divider"></div>
 
                 <div class="microTitle">🫶 Cuando dudes</div>
-                <div class="microSub">Cumplidos reales (sin repetir hasta agotarse).</div>
+                <div class="microSub">Recuerda siempre:.</div>
 
                 <div class="pepTalkBox">
                   <div class="pepTalkOut" id="doubtOut">Presiona “Cuando dudes” ✨</div>
@@ -243,27 +223,12 @@
               <button class="btn primary" id="goLetter">Seguir → carta y fotos</button>
             </div>
           </div>
-
-          <aside class="card">
-            <h2 class="h2">Detalle gatuno 🐾</h2>
-            <p class="p soft">
-              Adoptó una gatita de la calle. En el poster final hay un modo opcional de “huellitas”.
-              Se activa en el estudio de edición (regalo extra).
-            </p>
-
-            <div class="note" style="margin-top:12px;">
-              <div class="noteTitle">Frase clave</div>
-              <div class="noteText">
-                “Conocerás a muchas personas… pero en mí encontrarás alguien que estará disponible extendiendo mi mano…”
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
       <!-- PASO 4 -->
       <section class="screen" data-step="4">
-        <div class="grid">
+        <div class="grid two">
           <div class="card">
             <h2 class="h1">Carta navideña ✨</h2>
             <p class="p">
@@ -277,8 +242,8 @@
             <div class="photos">
               <div class="photoCard">
                 <div class="photoHead">
-                  <div class="photoTitle">📷 Luminé (Milagros)</div>
-                  <div class="photoMeta">1:1 • bordes redondeados</div>
+                  <div class="photoTitle">📷 Luminé</div>
+                  <div class="photoMeta"></div>
                 </div>
                 <img class="photo" id="imgLumine" alt="Foto de Luminé" />
                 <div class="fileRow">
@@ -294,7 +259,7 @@
               <div class="photoCard">
                 <div class="photoHead">
                   <div class="photoTitle">📷 Yo</div>
-                  <div class="photoMeta">1:1 • bordes redondeados</div>
+                  <div class="photoMeta"></div>
                 </div>
                 <img class="photo" id="imgMe" alt="Mi foto" />
                 <div class="fileRow">
@@ -356,9 +321,9 @@
 
       <!-- PASO 5 -->
       <section class="screen" data-step="5">
-        <div class="grid">
+        <div class="grid one">
           <div class="card">
-            <h2 class="h1">Poster “lujo” descargable 🎄</h2>
+            <h2 class="h1">Poster descargable 🎄</h2>
             <p class="p">
               Presiona <b>Generar</b> para actualizar el poster.
               Luego puedes <b>Descargar</b> o <b>Compartir</b>.
@@ -386,23 +351,12 @@
 
             <div class="shareHint" id="shareHint" aria-live="polite"></div>
           </div>
-
-          <aside class="card">
-            <h2 class="h2">Contenido en el poster</h2>
-            <ul class="list">
-              <li>Marco doble oro/plata + guirnalda</li>
-              <li>2 fotos por defecto (lumine.jpeg / rube.jpg)</li>
-              <li>Promesa de amistad + mensaje largo</li>
-              <li>Frases cortas decorativas</li>
-              <li>Opcional: huellitas por la gatita 🐾 (bonus)</li>
-            </ul>
-          </aside>
         </div>
       </section>
 
       <!-- PASO 6 -->
       <section class="screen" data-step="6">
-        <div class="grid">
+        <div class="grid two">
           <div class="card">
             <h2 class="h1">🎁 Regalo extra: Estudio de edición</h2>
             <p class="p">Aquí ya puedes personalizar y todo saldrá reflejado en la imagen descargable.</p>
@@ -467,7 +421,7 @@
 
             <div class="divider"></div>
 
-            <label class="label">Tu frase de apoyo (promesa de amistad)</label>
+            <label class="label">Tu frase de apoyo</label>
             <textarea class="textarea" id="promiseBonus"></textarea>
 
             <label class="label mt12">Mensaje largo</label>
@@ -503,7 +457,7 @@
           </div>
 
           <aside class="card">
-            <h2 class="h2">Qué se actualiza</h2>
+            <h2 class="h2">¿Qué se actualiza<?/h2>
             <ul class="list">
               <li>Nombre en poster, firma, frases y mensaje</li>
               <li>Promesa de amistad</li>
@@ -514,13 +468,28 @@
         </div>
       </section>
 
-      <section class="navBar">
-        <button class="btn" id="prev">← Atrás</button>
-        <button class="btn" id="next">Siguiente →</button>
-      </section>
+      
     </main>
   </div>
 
+  <!-- Modal: Tarjetas sorpresa -->
+<div class="modal" id="surpriseModal" aria-hidden="true">
+  <div class="modalDialog" role="dialog" aria-modal="true" aria-labelledby="surpriseModalTitle">
+    <div class="modalHead">
+      <div class="modalTitle" id="surpriseModalTitle">Sorpresa ✨</div>
+      <button class="modalClose" id="surpriseModalClose" type="button" aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="modalBody" id="surpriseModalBody"></div>
+
+    <div class="modalActions">
+      <button class="btn gold" id="surpriseModalOk" type="button">Listo 💜</button>
+    </div>
+  </div>
+</div>
+
   <script src="app.js"></script>
+    
+
 </body>
 </html>

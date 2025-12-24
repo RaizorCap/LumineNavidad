@@ -1,4 +1,4 @@
-const CACHE_NAME = "lumine-xmas-v4";
+const CACHE_NAME = "lumine-xmas-v5";
 const ASSETS = [
   "./",
   "./index.html",

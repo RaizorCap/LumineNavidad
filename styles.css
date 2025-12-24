@@ -551,3 +551,218 @@ canvas{
   color: rgba(195,189,223,.92);
   line-height: 1.5;
 }
+/* =========================
+   Modal (Tarjetas sorpresa)
+========================= */
+body.modalOpen{ overflow:hidden; }
+
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,.62);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+.modal.show{ display:flex; }
+
+.modalDialog{
+  width: min(560px, 100%);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(35,16,53,.96), rgba(15,8,24,.96));
+  border: 1px solid rgba(246,213,139,.22);
+  box-shadow: 0 30px 90px rgba(0,0,0,.70);
+  overflow: hidden;
+}
+
+.modalHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.modalTitle{
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  color: rgba(246,213,139,.95);
+}
+
+.modalClose{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(238,234,255,.92);
+  cursor: pointer;
+}
+.modalClose:hover{ background: rgba(255,255,255,.10); }
+
+.modalBody{
+  padding: 16px 14px;
+  color: rgba(238,234,255,.92);
+  font-size: 16px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.modalBody::before{
+  content:"“";
+  color: rgba(167,139,250,.55);
+  font-weight: 900;
+  font-size: 28px;
+  margin-right: 6px;
+}
+.modalBody::after{
+  content:"”";
+  color: rgba(167,139,250,.55);
+  font-weight: 900;
+  font-size: 28px;
+  margin-left: 6px;
+}
+
+.modalActions{
+  padding: 0 14px 14px;
+  display:flex;
+  justify-content:flex-end;
+}
+/* =========================
+   Flip fallback (sin 3D)
+========================= */
+.flipCard{ position:relative; overflow:hidden; }
+.flipInner{ position:relative; width:100%; height:100%; display:block; }
+.flipFront, .flipBack{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  text-align:center;
+  line-height:1.25;
+  pointer-events:none; /* el click lo recibe el button */
+}
+.flipBack{
+  opacity:0;
+  transform: scale(.98);
+  color: rgba(238,234,255,.92);
+}
+.flipCard.flipped .flipBack{ opacity:1; transform: scale(1); }
+.flipCard.flipped .flipFront{ opacity:0; }
+
+/* =========================
+   Modal (Tarjetas sorpresa)
+========================= */
+body.modalOpen{ overflow:hidden; }
+
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(0,0,0,.62);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+.modal.show{ display:flex; }
+
+.modalDialog{
+  width: min(560px, 100%);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(35,16,53,.96), rgba(15,8,24,.96));
+  border: 1px solid rgba(246,213,139,.22);
+  box-shadow: 0 30px 90px rgba(0,0,0,.70);
+  overflow: hidden;
+}
+
+.modalHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 14px 14px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.modalTitle{
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  color: rgba(246,213,139,.95);
+}
+
+.modalClose{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  color: rgba(238,234,255,.92);
+  cursor: pointer;
+}
+.modalClose:hover{ background: rgba(255,255,255,.10); }
+
+.modalBody{
+  padding: 16px 14px;
+  color: rgba(238,234,255,.92);
+  font-size: 16px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.modalActions{
+  padding: 0 14px 14px;
+  display:flex;
+  justify-content:flex-end;
+}
+/* SOLO MODAL: nunca mostrar el back dentro de las tarjetas */
+.flipBack{ display:none !important; }
+.flipFront{
+  hyphens: none;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+/* =========================
+   Grid adaptable: 1 col / 2 col
+========================= */
+.grid{
+  display: grid;
+  gap: 18px;
+  align-items: start;
+}
+
+/* 1 columna (cuando quitaste los aside) */
+.grid.one{
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center; /* centra el contenido */
+}
+.grid.one > .card{
+  width: min(920px, 100%); /* evita que quede chiquito a la izquierda */
+}
+
+/* 2 columnas (cuando SÍ hay aside) */
+.grid.two{
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  align-items: start;
+}
+
+/* En móvil: siempre 1 columna */
+@media (max-width: 980px){
+  .grid.two{
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+  }
+  .grid.one > .card{
+    width: 100%;
+  }
+}

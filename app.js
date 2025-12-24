@@ -43,7 +43,7 @@ const state = {
     signature: DEFAULT_SIGNATURE,
     revealLine: "Luminé, tú haces diciembre más bonito.",
     goalLine: "Navidad 2025 • Tu esfuerzo vale",
-    sealLine: "Paradero + Academia",
+    sealLine: "Por nuestra amistad ",
     srtaMode: true,
     enhanceLumine: true,
     glitter: 55,
@@ -110,14 +110,24 @@ if (gift) {
 }
 
 /* -------------------------
-   ✅ Tarjetas sorpresa (FIX TOTAL)
+   ✅ Tarjetas sorpresa (MODAL)
    - Funciona en desktop y móvil
-   - No depende de IDs cardBack1..6 (aunque los tenga)
-   - Usa pointerup + click + teclado
+   - No depende del "flip"
 -------------------------- */
-function initSurpriseCards() {
-  const grid = $("flipGrid");
+/* -------------------------
+   ✅ Tarjetas sorpresa (MODAL + FLIP fallback)
+   - Captura el click aunque el DOM interno cambie
+   - Si el modal no existe, hace fallback a alert()
+-------------------------- */
+function initSurpriseCardsModalAndFlip(){
+  const grid = document.getElementById("flipGrid");
   if (!grid) return;
+
+  const modal = document.getElementById("surpriseModal");
+  const titleEl = document.getElementById("surpriseModalTitle");
+  const bodyEl  = document.getElementById("surpriseModalBody");
+  const closeBtn= document.getElementById("surpriseModalClose");
+  const okBtn   = document.getElementById("surpriseModalOk");
 
   const messages = [
     "Srta. Luminé: tu esfuerzo sí se nota. 💜",
@@ -129,62 +139,69 @@ function initSurpriseCards() {
   ];
 
   const cards = Array.from(grid.querySelectorAll(".flipCard"));
-
-  // Rellenar backs (aunque falten IDs)
   cards.forEach((card, i) => {
-    card.setAttribute("type", "button");
-    card.setAttribute("aria-pressed", "false");
+    card.dataset.sTitle = `Sorpresa ${i + 1} ✨`;
+    card.dataset.sMsg = messages[i] || "✨";
 
-    let back = card.querySelector(".flipBack");
-    if (!back) {
-      const inner = card.querySelector(".flipInner") || card;
-      back = document.createElement("span");
-      back.className = "flipBack";
-      inner.appendChild(back);
+    // rellena el back (por si quieres ver el mensaje en flip)
+    const back = card.querySelector(".flipBack");
+    if (back) back.textContent = card.dataset.sMsg;
+  });
+
+  let lastFocus = null;
+
+  function openModal(title, msg){
+    // ✅ Fallback: si NO existe el modal, igual verás el mensaje
+    if (!modal || !titleEl || !bodyEl) {
+      alert(msg || "");
+      return;
     }
-    back.textContent = messages[i] || "✨";
-  });
+    lastFocus = document.activeElement;
 
-  const toggle = (card) => {
-    if (!card) return;
-    const flipped = card.classList.toggle("flipped");
-    card.setAttribute("aria-pressed", flipped ? "true" : "false");
-  };
+    titleEl.textContent = title || "Sorpresa ✨";
+    bodyEl.textContent  = msg || "";
 
-  // ✅ pointerup funciona en touch + mouse
-  grid.addEventListener("pointerup", (e) => {
-    const card = e.target.closest(".flipCard");
-    if (!card) return;
-    e.preventDefault();
-    toggle(card);
-  });
-
-  // fallback click
-  grid.addEventListener("click", (e) => {
-    const card = e.target.closest(".flipCard");
-    if (!card) return;
-    toggle(card);
-  });
-
-  // teclado
-  grid.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    const card = e.target.closest(".flipCard");
-    if (!card) return;
-    e.preventDefault();
-    toggle(card);
-  });
-
-  const resetBtn = $("resetCards");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      grid.querySelectorAll(".flipCard").forEach((c) => {
-        c.classList.remove("flipped");
-        c.setAttribute("aria-pressed", "false");
-      });
-    });
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modalOpen");
+    setTimeout(() => (okBtn || closeBtn)?.focus?.(), 0);
   }
+
+  function closeModal(){
+    if (!modal) return;
+    modal.classList.remove("show");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modalOpen");
+    if (lastFocus?.focus) lastFocus.focus();
+  }
+
+  closeBtn?.addEventListener("click", closeModal);
+  okBtn?.addEventListener("click", closeModal);
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal?.classList.contains("show")) closeModal();
+  });
+
+  // ✅ Captura máxima: si algo frena bubbling, igual lo detectamos
+  document.addEventListener("pointerup", (e) => {
+    const card = e.target.closest?.(".flipCard");
+    if (!card) return;
+
+    // 2) modal
+    openModal(card.dataset.sTitle, card.dataset.sMsg);
+  }, true);
+
+  // Reiniciar
+  const resetBtn = document.getElementById("resetCards");
+  resetBtn?.addEventListener("click", () => {
+    grid.querySelectorAll(".flipCard").forEach(c => c.classList.remove("flipped"));
+  });
 }
+
 
 /* -------------------------
    Modo UNMSM (ánimo)
@@ -969,7 +986,7 @@ function lockHistoryEdits() {
 (async function init() {
   lockHistoryEdits();
   updateBonusUI();
-  initSurpriseCards(); // ✅ aquí se inicializan tarjetas sí o sí
+  initSurpriseCardsModalAndFlip(); // ✅ aquí se inicializan tarjetas sí o sí
 
   // Defaults de fotos para “primera vez”
   const dL = await tryFetchToDataURL(DEFAULT_LUMINE_PATH);
